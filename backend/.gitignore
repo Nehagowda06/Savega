@@ -24,10 +24,6 @@ Thumbs.db
 # Prisma
 prisma/migrations/**/migration_lock.toml
 
-# Test files
-test-*.js
-test-*.ts
-
 # Documentation (keep in local only)
 *_GUIDE.md
 *_SETUP.md
