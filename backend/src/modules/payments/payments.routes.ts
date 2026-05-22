@@ -6,6 +6,7 @@ import { env } from "../../config/env.js";
 import { authenticate } from "../../middleware/auth.js";
 import { AppError } from "../../middleware/error-handler.js";
 import { z } from "zod";
+import { NotificationService } from "../../services/notification.service.js";
 
 export const paymentsRouter = Router();
 
@@ -147,6 +148,20 @@ paymentsRouter.post("/payments/verify", async (req, res, next) => {
         status: "CONFIRMED",
       },
     });
+
+    // Send payment success notification
+    await NotificationService.notifyPaymentSuccess(
+      req.user!.id,
+      order.orderNumber,
+      order.grandTotal
+    );
+
+    // Send order confirmed notification
+    await NotificationService.notifyOrderStatusChange(
+      req.user!.id,
+      order.orderNumber,
+      "CONFIRMED"
+    );
 
     res.json({
       success: true,

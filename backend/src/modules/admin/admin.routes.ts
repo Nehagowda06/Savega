@@ -3,6 +3,7 @@ import { prisma } from "../../config/database.js";
 import { authenticate, requireAdmin } from "../../middleware/auth.js";
 import { AppError } from "../../middleware/error-handler.js";
 import { z } from "zod";
+import { NotificationService } from "../../services/notification.service.js";
 
 export const adminRouter = Router();
 
@@ -241,7 +242,17 @@ adminRouter.patch("/admin/orders/:id/status", async (req, res, next) => {
         status,
         ...(status === "DELIVERED" && { deliveredAt: new Date() }),
       },
+      include: {
+        user: { select: { id: true } },
+      },
     });
+
+    // Send notification to user
+    await NotificationService.notifyOrderStatusChange(
+      order.user.id,
+      order.orderNumber,
+      status
+    );
 
     res.json({ success: true, data: order });
   } catch (error) {

@@ -13,6 +13,8 @@ import { listsRouter } from "./modules/lists/lists.routes.js";
 import { paymentsRouter, handleRazorpayWebhook } from "./modules/payments/payments.routes.js";
 import { searchRouter } from "./modules/search/search.routes.js";
 import { adminRouter } from "./modules/admin/admin.routes.js";
+import { notificationsRouter } from "./modules/notifications/notifications.routes.js";
+import { trackingRouter } from "./modules/tracking/tracking.routes.js";
 
 export function createApp() {
   const app = express();
@@ -67,6 +69,8 @@ export function createApp() {
   app.use("/api", usersRouter);    // /api/profile, /api/addresses
   app.use("/api", listsRouter);    // /api/lists
   app.use("/api", paymentsRouter); // /api/payments
+  app.use("/api", notificationsRouter); // /api/notifications
+  app.use("/api", trackingRouter); // /api/tracking
   app.use("/api", adminRouter);    // /api/admin/* (admin only)
 
   // ============================================

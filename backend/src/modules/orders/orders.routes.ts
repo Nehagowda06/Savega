@@ -4,6 +4,7 @@ import { authenticate } from "../../middleware/auth.js";
 import { AppError } from "../../middleware/error-handler.js";
 import { z } from "zod";
 import { randomBytes } from "crypto";
+import { NotificationService } from "../../services/notification.service.js";
 
 export const ordersRouter = Router();
 
@@ -233,6 +234,13 @@ ordersRouter.post("/orders", async (req, res, next) => {
       return newOrder;
     });
 
+    // Send notification
+    await NotificationService.notifyOrderCreated(
+      req.user!.id,
+      order.orderNumber,
+      order.grandTotal
+    );
+
     res.status(201).json({
       success: true,
       data: {
@@ -290,6 +298,13 @@ ordersRouter.post("/orders/:id/cancel", async (req, res, next) => {
         });
       }
     });
+
+    // Send cancellation notification
+    await NotificationService.notifyOrderStatusChange(
+      req.user!.id,
+      order.orderNumber,
+      "CANCELLED"
+    );
 
     res.json({
       success: true,
