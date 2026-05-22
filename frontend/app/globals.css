@@ -189,12 +189,10 @@ button, input { font: inherit; }
     padding-right: 20px !important;
   }
 
-  /* ── All product cards: uniform size on desktop ──
-     Sizing is handled via md: Tailwind classes in page.tsx.
-     This block just removes the super-savings-grid override
-     since grid-cols-4 is now set via Tailwind md: prefix. */
-  .super-savings-grid {
+  /* ── Super Savings grid: fixed 200px columns on desktop ── */
+  [data-grid="super-savings"] {
+    grid-template-columns: repeat(4, 200px) !important;
     gap: 16px !important;
   }
-}
+}}
 

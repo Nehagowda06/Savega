@@ -999,15 +999,17 @@ function ProductGrid({ title, products }: { title: string; products: GroceryProd
           <Zap size={10} fill="white" strokeWidth={0} /> Limited time
         </div>
       </div>
-      <div className="grid grid-cols-2 gap-2.5 md:grid-cols-4 md:gap-4 super-savings-grid">
+      <div className="grid grid-cols-2 gap-2.5 md:gap-4" style={{ gridTemplateColumns: "repeat(2, 1fr)" }} data-grid="super-savings">
         {products.slice(0, 4).map((product) => (
-          <ProductCard
-            key={product.id} id={product.id} name={product.name} image={product.imageColor}
-            price={product.price} originalPrice={product.originalPrice}
-            weight={product.weight} tag={product.tag}
-            brand={product.brand} category={product.category}
-            description={product.description} details={product.details} nutrition={product.nutrition}
-          />
+          <div key={product.id} className="md:max-w-[200px] w-full">
+            <ProductCard
+              id={product.id} name={product.name} image={product.imageColor}
+              price={product.price} originalPrice={product.originalPrice}
+              weight={product.weight} tag={product.tag}
+              brand={product.brand} category={product.category}
+              description={product.description} details={product.details} nutrition={product.nutrition}
+            />
+          </div>
         ))}
       </div>
     </motion.section>
