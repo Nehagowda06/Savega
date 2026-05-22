@@ -933,11 +933,11 @@ function BuyAgainRow({ products }: { products: GroceryProduct[] }) {
           </div>
         </div>
       </div>
-      <div className="flex overflow-x-auto gap-2.5 px-3 pb-3 no-scrollbar">
+      <div className="flex overflow-x-auto gap-2.5 md:gap-4 px-3 pb-3 no-scrollbar">
         {products.map((product, i) => (
           <motion.div
             key={product.id}
-            className="w-[130px] flex-shrink-0"
+            className="w-[130px] md:w-[200px] flex-shrink-0"
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: Math.min(i * 0.04, 0.2), type: "spring", stiffness: 300, damping: 24 }}
@@ -967,11 +967,11 @@ function ProductRow({ title, subtitle, products }: { title: string; subtitle: st
           View all <ChevronRight size={11} strokeWidth={3} />
         </Link>
       </div>
-      <div className="flex overflow-x-auto gap-2.5 px-3 pb-3 no-scrollbar">
+      <div className="flex overflow-x-auto gap-2.5 md:gap-4 px-3 pb-3 no-scrollbar">
         {products.map((product, i) => (
           <motion.div
             key={product.id}
-            className="w-[130px] flex-shrink-0"
+            className="w-[130px] md:w-[200px] flex-shrink-0"
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: Math.min(i * 0.03, 0.15), type: "spring", stiffness: 300, damping: 24 }}
@@ -999,7 +999,7 @@ function ProductGrid({ title, products }: { title: string; products: GroceryProd
           <Zap size={10} fill="white" strokeWidth={0} /> Limited time
         </div>
       </div>
-      <div className="grid grid-cols-2 gap-2.5 super-savings-grid">
+      <div className="grid grid-cols-2 gap-2.5 md:grid-cols-4 md:gap-4 super-savings-grid">
         {products.slice(0, 4).map((product) => (
           <ProductCard
             key={product.id} id={product.id} name={product.name} image={product.imageColor}
