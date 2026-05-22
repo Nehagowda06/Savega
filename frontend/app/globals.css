@@ -155,11 +155,7 @@ button, input { font: inherit; }
     box-shadow: none;
   }
 
-  /* ── Banner: taller on desktop ── */
-  [style*="0a5c42"],
-  [style*="6b1209"] {
-    min-height: 200px !important;
-  }
+  /* ── Banner height handled via md:min-h-[240px] in JSX ── */
 
   /* ── Shop by Aisle section: bigger icons + more spacing ── */
   #grocery-aisles .flex.overflow-x-auto {

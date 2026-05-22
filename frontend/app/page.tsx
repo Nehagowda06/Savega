@@ -416,7 +416,7 @@ function GroceryHome({
     <>
       <motion.section variants={sectionVariants} className="px-3 pt-3">
         {/* Grocery banner */}
-        <div className="w-full rounded-2xl overflow-hidden relative flex"
+        <div className="w-full rounded-2xl overflow-hidden relative flex md:min-h-[240px]"
           style={{ background: "linear-gradient(120deg, #0a5c42 0%, #0e8a60 50%, #10a870 100%)", minHeight: "130px" }}>
 
           {/* Diagonal stripe pattern */}
@@ -428,23 +428,23 @@ function GroceryHome({
             style={{ background: "radial-gradient(ellipse at 80% 50%, rgba(255,255,255,0.15) 0%, transparent 65%)" }} />
 
           {/* Left: text content */}
-          <div className="relative z-10 flex-1 px-4 py-4 flex flex-col justify-between">
+          <div className="relative z-10 flex-1 px-4 py-4 md:px-10 md:py-8 flex flex-col justify-between">
             <div>
               <motion.div
                 initial={{ opacity: 0, y: -6 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.08 }}
                 className="inline-flex items-center gap-1 mb-2"
               >
-                <span className="bg-yellow-400 text-yellow-900 text-[8px] font-black uppercase px-2 py-0.5 rounded-full tracking-wider leading-none">⚡ 10 min delivery</span>
+                <span className="bg-yellow-400 text-yellow-900 text-[8px] md:text-[12px] font-black uppercase px-2 md:px-3 py-0.5 rounded-full tracking-wider leading-none">⚡ 10 min delivery</span>
               </motion.div>
               <motion.h1
                 initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.14 }}
-                className="text-[19px] font-black text-white leading-[1.18] tracking-tight"
+                className="text-[19px] md:text-[36px] font-black text-white leading-[1.18] tracking-tight"
               >
                 Fresh groceries,<br />at your door
               </motion.h1>
               <motion.p
                 initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.24 }}
-                className="text-[9.5px] text-white/70 mt-1 font-semibold"
+                className="text-[9.5px] md:text-[15px] text-white/70 mt-1 font-semibold"
               >
                 Fruits · Dairy · Snacks · Essentials
               </motion.p>
@@ -454,7 +454,7 @@ function GroceryHome({
               onClick={() => document.getElementById("grocery-aisles")?.scrollIntoView({ behavior: "smooth", block: "start" })}
               initial={{ opacity: 0, y: 4 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.32 }}
               whileTap={{ scale: 0.94 }}
-              className="mt-3 self-start inline-flex items-center gap-1 bg-white text-[#0a5c42] text-[9px] font-black px-3 py-1.5 rounded-full shadow-md cursor-pointer"
+              className="mt-3 self-start inline-flex items-center gap-1 bg-white text-[#0a5c42] text-[9px] md:text-[13px] font-black px-3 md:px-5 py-1.5 md:py-2.5 rounded-full shadow-md cursor-pointer"
             >
               Shop now <ChevronRight size={10} strokeWidth={3} />
             </motion.button>
@@ -464,9 +464,9 @@ function GroceryHome({
           <motion.div
             initial={{ opacity: 0, x: 24 }} animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.12, type: "spring", stiffness: 200, damping: 22 }}
-            className="relative w-[160px] flex-shrink-0 self-stretch flex items-center justify-center select-none overflow-hidden"
+            className="relative w-[160px] md:w-[280px] flex-shrink-0 self-stretch flex items-center justify-center select-none overflow-hidden"
           >
-            <svg width="160" height="130" viewBox="0 0 160 130" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <svg className="w-full h-full" viewBox="0 0 160 130" fill="none" xmlns="http://www.w3.org/2000/svg">
               {/* ── Shadow under everything ── */}
               <ellipse cx="80" cy="122" rx="58" ry="6" fill="black" fillOpacity="0.12"/>
 
@@ -641,7 +641,7 @@ function FoodHome() {
     <>
       <motion.section variants={sectionVariants} className="px-3 pt-3">
         {/* Food banner */}
-        <div className="w-full rounded-2xl overflow-hidden relative flex"
+        <div className="w-full rounded-2xl overflow-hidden relative flex md:min-h-[240px]"
           style={{ background: "linear-gradient(120deg, #6b1209 0%, #b02a1c 50%, #d94030 100%)", minHeight: "130px" }}>
 
           {/* Diagonal stripe pattern */}
@@ -653,23 +653,23 @@ function FoodHome() {
             style={{ background: "radial-gradient(ellipse at 80% 50%, rgba(255,180,80,0.18) 0%, transparent 65%)" }} />
 
           {/* Left: text content */}
-          <div className="relative z-10 flex-1 px-4 py-4 flex flex-col justify-between">
+          <div className="relative z-10 flex-1 px-4 py-4 md:px-10 md:py-8 flex flex-col justify-between">
             <div>
               <motion.div
                 initial={{ opacity: 0, y: -6 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.08 }}
                 className="inline-flex items-center gap-1 mb-2"
               >
-                <span className="bg-orange-400 text-orange-900 text-[8px] font-black uppercase px-2 py-0.5 rounded-full tracking-wider leading-none">🔥 Hot &amp; fresh</span>
+                <span className="bg-orange-400 text-orange-900 text-[8px] md:text-[12px] font-black uppercase px-2 md:px-3 py-0.5 rounded-full tracking-wider leading-none">🔥 Hot &amp; fresh</span>
               </motion.div>
               <motion.h1
                 initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.14 }}
-                className="text-[19px] font-black text-white leading-[1.18] tracking-tight"
+                className="text-[19px] md:text-[36px] font-black text-white leading-[1.18] tracking-tight"
               >
                 Order from<br />local favorites
               </motion.h1>
               <motion.p
                 initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.24 }}
-                className="text-[9.5px] text-white/70 mt-1 font-semibold"
+                className="text-[9.5px] md:text-[15px] text-white/70 mt-1 font-semibold"
               >
                 Restaurants · Quick bites · Desserts
               </motion.p>
@@ -679,7 +679,7 @@ function FoodHome() {
               onClick={() => document.getElementById("food-restaurants")?.scrollIntoView({ behavior: "smooth", block: "start" })}
               initial={{ opacity: 0, y: 4 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.32 }}
               whileTap={{ scale: 0.94 }}
-              className="mt-3 self-start inline-flex items-center gap-1 bg-white text-[#b02a1c] text-[9px] font-black px-3 py-1.5 rounded-full shadow-md cursor-pointer"
+              className="mt-3 self-start inline-flex items-center gap-1 bg-white text-[#b02a1c] text-[9px] md:text-[13px] font-black px-3 md:px-5 py-1.5 md:py-2.5 rounded-full shadow-md cursor-pointer"
             >
               Order now <ChevronRight size={10} strokeWidth={3} />
             </motion.button>
@@ -689,9 +689,9 @@ function FoodHome() {
           <motion.div
             initial={{ opacity: 0, x: 24 }} animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.12, type: "spring", stiffness: 200, damping: 22 }}
-            className="relative w-[160px] flex-shrink-0 self-stretch flex items-center justify-center select-none overflow-hidden"
+            className="relative w-[160px] md:w-[280px] flex-shrink-0 self-stretch flex items-center justify-center select-none overflow-hidden"
           >
-            <svg width="160" height="130" viewBox="0 0 160 130" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <svg className="w-full h-full" viewBox="0 0 160 130" fill="none" xmlns="http://www.w3.org/2000/svg">
               <defs>
                 {/* Handi body gradient — warm amber */}
                 <linearGradient id="handiBody" x1="55" y1="52" x2="115" y2="115" gradientUnits="userSpaceOnUse">
