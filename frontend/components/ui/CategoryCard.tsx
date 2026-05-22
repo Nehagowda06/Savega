@@ -15,14 +15,14 @@ export default function CategoryCard({ name, image, color, isActive = false, onC
     <motion.button
       type="button"
       onClick={onClick}
-      whileTap={{ scale: 0.9 }}
       transition={{ type: "spring", stiffness: 600, damping: 15 }}
-      className="w-[72px] flex flex-col items-center flex-shrink-0 cursor-pointer select-none bg-transparent p-0"
+      className="w-[62px] flex flex-col items-center flex-shrink-0 cursor-pointer select-none bg-transparent p-0"
     >
       <motion.div
         animate={{ scale: isActive ? 1.04 : 1, y: isActive ? -2 : 0 }}
+        whileTap={{ scale: 0.92 }}
         transition={{ type: "spring", stiffness: 400, damping: 22 }}
-        className={`w-[64px] h-[64px] ${color} rounded-[20px] flex items-center justify-center relative overflow-hidden`}
+        className={`w-[40px] h-[40px] ${color} rounded-[13px] flex items-center justify-center relative overflow-hidden`}
         style={{
           boxShadow: isActive
             ? "0 0 0 2px #6941c6, 0 4px 14px rgba(105,65,198,0.22)"
@@ -38,9 +38,9 @@ export default function CategoryCard({ name, image, color, isActive = false, onC
         <img
           src={image}
           alt={name}
-          width={54}
-          height={54}
-          className="w-[54px] h-[54px] object-contain relative z-10"
+          width={26}
+          height={26}
+          className="w-[26px] h-[26px] object-contain relative z-10"
           style={{ filter: "drop-shadow(0 3px 6px rgba(0,0,0,0.18))" }}
           loading="lazy"
         />
@@ -52,7 +52,7 @@ export default function CategoryCard({ name, image, color, isActive = false, onC
           fontWeight: isActive ? 600 : 400,
         }}
         transition={{ duration: 0.15 }}
-        className="block w-full truncate text-[9px] mt-1.5 text-center leading-tight"
+        className="block w-full text-[9px] mt-1.5 text-center leading-tight break-words"
         title={name}
       >
         {name}
