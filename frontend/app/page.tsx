@@ -160,9 +160,8 @@ export default function Home() {
       <PullToRefresh onRefresh={handleRefresh}>
         <motion.div variants={containerVariants} initial="hidden" animate="visible" className="pb-4">
           {/* Mode toggle */}
-          <motion.section variants={sectionVariants} className="px-3 pt-2.5">
+          <motion.section variants={sectionVariants} className="px-3 md:px-8 pt-2.5">
             <div className="relative flex bg-gray-100 rounded-xl p-1 gap-1">
-              {/* Sliding pill — uses left % so it's always perfectly half */}
               <motion.div
                 className="absolute top-1 bottom-1 rounded-lg bg-white shadow-sm"
                 animate={{ left: mode === "grocery" ? "4px" : "50%", width: "calc(50% - 6px)" }}
@@ -170,19 +169,19 @@ export default function Home() {
               />
               <button
                 onClick={() => { setMode("grocery"); reset(); }}
-                className={`relative z-10 flex-1 h-7 rounded-lg text-[11px] flex items-center justify-center gap-1.5 transition-colors duration-150 ${
+                className={`relative z-10 flex-1 h-7 md:h-11 rounded-lg text-[11px] md:text-[16px] flex items-center justify-center gap-1.5 transition-colors duration-150 ${
                   mode === "grocery" ? "font-medium text-brand-navy" : "font-normal text-gray-400"
                 }`}
               >
-                <Store size={12} strokeWidth={1.6} /> Groceries
+                <Store size={12} className="md:w-5 md:h-5" strokeWidth={1.6} /> Groceries
               </button>
               <button
                 onClick={() => { setMode("food"); reset(); }}
-                className={`relative z-10 flex-1 h-7 rounded-lg text-[11px] flex items-center justify-center gap-1.5 transition-colors duration-150 ${
+                className={`relative z-10 flex-1 h-7 md:h-11 rounded-lg text-[11px] md:text-[16px] flex items-center justify-center gap-1.5 transition-colors duration-150 ${
                   mode === "food" ? "font-medium text-brand-navy" : "font-normal text-gray-400"
                 }`}
               >
-                <Utensils size={12} strokeWidth={1.6} /> Food
+                <Utensils size={12} className="md:w-5 md:h-5" strokeWidth={1.6} /> Food
               </button>
             </div>
           </motion.section>
@@ -587,13 +586,13 @@ function GroceryHome({
       </motion.section>
 
       <motion.section variants={sectionVariants} className="mt-4" id="grocery-aisles">
-        <div className="px-3 flex items-center justify-between mb-2.5">
-          <h2 className="text-[14px] font-black text-brand-text">Shop by Aisle</h2>
-          <Link href="/categories" className="text-[10px] font-black text-brand-primary bg-gray-100 px-2.5 py-1 rounded-full flex items-center gap-0.5">
+        <div className="px-3 md:px-8 flex items-center justify-between mb-2.5">
+          <h2 className="text-[14px] md:text-[22px] font-black text-brand-text">Shop by Aisle</h2>
+          <Link href="/categories" className="text-[10px] md:text-[14px] font-black text-brand-primary bg-gray-100 px-2.5 md:px-4 py-1 md:py-2 rounded-full flex items-center gap-0.5">
             See all <ChevronRight size={11} strokeWidth={3} />
           </Link>
         </div>
-        <div className="flex overflow-x-auto gap-2 px-3 py-2 no-scrollbar">
+        <div className="flex overflow-x-auto gap-2 px-3 md:px-8 py-2 no-scrollbar">
           {groceryAisles.map((aisle) => (
             <CategoryCard
               key={aisle.name}
@@ -605,19 +604,19 @@ function GroceryHome({
             />
           ))}
         </div>
-        <div className="px-3 mt-3 grid grid-cols-2 gap-2">
+        <div className="px-3 md:px-8 mt-3 grid grid-cols-2 gap-2 md:grid-cols-4 md:gap-3">
           {activeSubcategories.map((subcategory) => (
             <Link
               href={`/categories/${encodeURIComponent(subcategory.name)}`}
               key={subcategory.name}
-              className="min-h-10 rounded-xl border border-gray-200 bg-white px-2.5 py-2 flex items-center justify-between gap-2 active:scale-95 transition-transform shadow-sm"
+              className="min-h-10 md:min-h-14 rounded-xl border border-gray-200 bg-white px-2.5 md:px-4 py-2 md:py-3 flex items-center justify-between gap-2 active:scale-95 transition-transform shadow-sm"
             >
               <div className="flex items-center gap-2 min-w-0">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={subcategory.image} alt={subcategory.name} width={20} height={20} className="w-5 h-5 object-contain flex-shrink-0" loading="lazy" />
-                <span className="text-[10px] font-black text-brand-navy truncate">{subcategory.name}</span>
+                <img src={subcategory.image} alt={subcategory.name} width={20} height={20} className="w-5 h-5 md:w-8 md:h-8 object-contain flex-shrink-0" loading="lazy" />
+                <span className="text-[10px] md:text-[15px] font-black text-brand-navy truncate">{subcategory.name}</span>
               </div>
-              <ChevronRight size={11} className="text-gray-400 flex-shrink-0" strokeWidth={2.5} />
+              <ChevronRight size={11} className="text-gray-400 flex-shrink-0 md:w-5 md:h-5" strokeWidth={2.5} />
             </Link>
           ))}
         </div>

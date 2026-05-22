@@ -157,32 +157,14 @@ button, input { font: inherit; }
 
   /* ── Banner height handled via md:min-h-[240px] in JSX ── */
 
-  /* ── Shop by Aisle section: bigger icons + more spacing ── */
-  #grocery-aisles .flex.overflow-x-auto {
-    gap: 20px !important;
-    padding-left: 20px !important;
-    padding-right: 20px !important;
-  }
-  /* Scale up each CategoryCard */
+  /* ── Shop by Aisle: handled via md: classes in JSX ── */
+
+  /* Scale up CategoryCard icons on desktop */
   #grocery-aisles .flex.overflow-x-auto > button {
-    width: 96px !important;
-    transform: scale(1.2);
+    transform: scale(1.5);
     transform-origin: top center;
-    margin-bottom: 12px;
-  }
-
-  /* ── Subcategory grid: 4 columns on desktop ── */
-  #grocery-aisles .grid {
-    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
-    gap: 12px !important;
-    padding-left: 20px !important;
-    padding-right: 20px !important;
-  }
-
-  /* ── Shop by Aisle heading row padding ── */
-  #grocery-aisles > div:first-child {
-    padding-left: 20px !important;
-    padding-right: 20px !important;
+    margin-bottom: 20px;
+    margin-right: 16px;
   }
 
   /* ── Super Savings grid: fixed 200px columns on desktop ── */

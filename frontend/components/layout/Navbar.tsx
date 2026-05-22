@@ -100,20 +100,20 @@ export default function Navbar() {
   return (
     <>
       <header className="sticky top-0 z-50 bg-white border-b border-purple-50 shadow-[0_2px_16px_rgba(95,37,159,0.1)]">
-        <div className="px-3.5 py-2.5">
-          <div className="flex items-center justify-between mb-2.5">
-            <div className="flex items-center gap-2 min-w-0">
+        <div className="px-3.5 md:px-8 py-2.5 md:py-4">
+          <div className="flex items-center justify-between mb-2.5 md:mb-4">
+            <div className="flex items-center gap-2 md:gap-4 min-w-0">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <motion.img
                 src="/savega logo.svg" alt="Savega"
-                className="w-9 h-9 object-contain flex-shrink-0"
+                className="w-9 h-9 md:w-14 md:h-14 object-contain flex-shrink-0"
                 whileTap={{ rotate: -10, scale: 0.9 }}
                 transition={{ type: "spring", stiffness: 500, damping: 15 }}
               />
               <div className="min-w-0">
                 <div className="flex items-center gap-1.5 mb-0.5">
-                  <span className="text-[8px] font-black text-brand-primary uppercase tracking-wider">savega</span>
-                  <span className="badge-hot text-white text-[7px] font-black px-1.5 py-0.5 rounded-full">10 mins</span>
+                  <span className="text-[8px] md:text-[13px] font-black text-brand-primary uppercase tracking-wider">savega</span>
+                  <span className="badge-hot text-white text-[7px] md:text-[11px] font-black px-1.5 md:px-2.5 py-0.5 rounded-full">10 mins</span>
                 </div>
                 <button
                   type="button"
@@ -121,8 +121,8 @@ export default function Navbar() {
                   className="flex items-center gap-1 min-w-0 group"
                   aria-label="Change delivery address"
                 >
-                  <MapPin size={11} className="text-brand-primary flex-shrink-0" strokeWidth={3} />
-                  <span className="text-[12px] font-black text-brand-text leading-none truncate max-w-[150px]">
+                  <MapPin size={11} className="text-brand-primary flex-shrink-0 md:w-5 md:h-5" strokeWidth={3} />
+                  <span className="text-[12px] md:text-[18px] font-black text-brand-text leading-none truncate max-w-[150px] md:max-w-xs">
                     {activeAddress.label} - Mandya
                   </span>
                   <motion.span
@@ -130,7 +130,7 @@ export default function Navbar() {
                     transition={{ duration: 0.2 }}
                     className="flex-shrink-0"
                   >
-                    <ChevronDown size={12} className="text-brand-primary" strokeWidth={3} />
+                    <ChevronDown size={12} className="text-brand-primary md:w-5 md:h-5" strokeWidth={3} />
                   </motion.span>
                 </button>
               </div>
@@ -140,25 +140,25 @@ export default function Navbar() {
               <motion.div
                 whileTap={{ scale: 0.88 }}
                 whileHover={{ scale: 1.05 }}
-                className="w-9 h-9 rounded-full savega-gradient flex items-center justify-center text-white cursor-pointer shadow-[0_4px_12px_rgba(95,37,159,0.35)]"
+                className="w-9 h-9 md:w-14 md:h-14 rounded-full savega-gradient flex items-center justify-center text-white cursor-pointer shadow-[0_4px_12px_rgba(95,37,159,0.35)]"
                 aria-label="Profile"
               >
-                <User size={16} strokeWidth={2.5} />
+                <User size={16} className="md:w-6 md:h-6" strokeWidth={2.5} />
               </motion.div>
             </Link>
           </div>
 
           {showSearch && (
             <div className="relative">
-              <div className="absolute inset-y-0 left-3 flex items-center pointer-events-none z-10">
+              <div className="absolute inset-y-0 left-3 md:left-5 flex items-center pointer-events-none z-10">
                 <motion.div
                   animate={{ color: query ? "#6941c6" : "#8fa0b8" }}
                   transition={{ duration: 0.2 }}
                 >
-                  <Search size={15} strokeWidth={2.5} />
+                  <Search size={15} className="md:w-5 md:h-5" strokeWidth={2.5} />
                 </motion.div>
               </div>
-              <div className="search-bar relative w-full h-10 rounded-xl flex items-center overflow-hidden">
+              <div className="search-bar relative w-full h-10 md:h-14 rounded-xl md:rounded-2xl flex items-center overflow-hidden">
                 <input
                   ref={inputRef}
                   type="text"
@@ -167,33 +167,33 @@ export default function Navbar() {
                   onFocus={() => setSearchFocused(true)}
                   onBlur={() => setTimeout(() => setSearchFocused(false), 150)}
                   onKeyDown={(e) => e.key === "Enter" && handleSearchSubmit()}
-                  className="w-full h-full pl-9 pr-16 bg-transparent text-[12px] font-medium focus:outline-none z-10 text-brand-text"
+                  className="w-full h-full pl-9 md:pl-14 pr-16 md:pr-24 bg-transparent text-[12px] md:text-[16px] font-medium focus:outline-none z-10 text-brand-text"
                   aria-label="Search Savega" placeholder="" />
                 {!query && (
-                  <div className="absolute left-9 inset-y-0 flex items-center pointer-events-none z-0">
+                  <div className="absolute left-9 md:left-14 inset-y-0 flex items-center pointer-events-none z-0">
                     <AnimatePresence mode="wait">
                       <motion.span key={placeholderIdx}
                         initial={{ y: 8, opacity: 0 }} animate={{ y: 0, opacity: 1 }} exit={{ y: -8, opacity: 0 }}
                         transition={{ duration: 0.2 }}
-                        className="text-brand-text-muted text-[12px] font-medium">
+                        className="text-brand-text-muted text-[12px] md:text-[16px] font-medium">
                         {placeholders[placeholderIdx]}
                       </motion.span>
                     </AnimatePresence>
                   </div>
                 )}
               </div>
-              <div className="absolute right-3 inset-y-0 flex items-center z-10 gap-1">
+              <div className="absolute right-3 md:right-5 inset-y-0 flex items-center z-10 gap-1">
                 <AnimatePresence mode="wait">
                   {query ? (
                     <motion.button key="clear" type="button" onClick={() => reset()}
                       initial={{ scale: 0, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} exit={{ scale: 0, opacity: 0 }}
-                      className="w-5 h-5 rounded-full bg-brand-primary/20 flex items-center justify-center text-brand-primary"
+                      className="w-5 h-5 md:w-7 md:h-7 rounded-full bg-brand-primary/20 flex items-center justify-center text-brand-primary"
                       aria-label="Clear search">
                       <X size={11} strokeWidth={3} />
                     </motion.button>
                   ) : (
                     <motion.span key="label" initial={{ opacity: 0 }} animate={{ opacity: 1 }}
-                      className="text-[11px] font-black text-brand-primary">
+                      className="text-[11px] md:text-[15px] font-black text-brand-primary">
                       Search
                     </motion.span>
                   )}
