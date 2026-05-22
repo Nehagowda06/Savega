@@ -196,12 +196,13 @@ button, input { font: inherit; }
   .mt-3 .flex.overflow-x-auto > div {
     width: 200px !important;
     flex-shrink: 0;
+    margin-right: 12px;
   }
 
   /* Super Savings grid — cap card height so image doesn't balloon */
   .super-savings-grid {
     grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
-    gap: 12px !important;
+    gap: 16px !important;
   }
   .super-savings-grid > div {
     max-width: 220px !important;
