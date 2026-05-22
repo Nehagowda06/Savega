@@ -194,5 +194,15 @@ button, input { font: inherit; }
     grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
     gap: 12px !important;
   }
+
+  /* ── All product cards: uniform 90% size on desktop ──
+     zoom shrinks the card + its internal layout (unlike transform:scale)
+     Targets: super savings grid, horizontal product rows, search results grid */
+  .super-savings-grid > div,
+  .mt-5 .flex.overflow-x-auto > div,
+  .mt-3 .flex.overflow-x-auto > div,
+  .px-3.grid > div {
+    zoom: 0.9;
+  }
 }
 
