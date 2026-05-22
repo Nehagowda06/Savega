@@ -160,9 +160,8 @@ export default function Home() {
       <PullToRefresh onRefresh={handleRefresh}>
         <motion.div variants={containerVariants} initial="hidden" animate="visible" className="pb-4">
           {/* Mode toggle */}
-          <motion.section variants={sectionVariants} className="px-3 pt-2.5">
+          <motion.section variants={sectionVariants} className="px-3 md:px-8 pt-2.5">
             <div className="relative flex bg-gray-100 rounded-xl p-1 gap-1">
-              {/* Sliding pill — uses left % so it's always perfectly half */}
               <motion.div
                 className="absolute top-1 bottom-1 rounded-lg bg-white shadow-sm"
                 animate={{ left: mode === "grocery" ? "4px" : "50%", width: "calc(50% - 6px)" }}
@@ -170,19 +169,19 @@ export default function Home() {
               />
               <button
                 onClick={() => { setMode("grocery"); reset(); }}
-                className={`relative z-10 flex-1 h-7 rounded-lg text-[11px] flex items-center justify-center gap-1.5 transition-colors duration-150 ${
+                className={`relative z-10 flex-1 h-7 md:h-11 rounded-lg text-[11px] md:text-[16px] flex items-center justify-center gap-1.5 transition-colors duration-150 ${
                   mode === "grocery" ? "font-medium text-brand-navy" : "font-normal text-gray-400"
                 }`}
               >
-                <Store size={12} strokeWidth={1.6} /> Groceries
+                <Store size={12} className="md:w-5 md:h-5" strokeWidth={1.6} /> Groceries
               </button>
               <button
                 onClick={() => { setMode("food"); reset(); }}
-                className={`relative z-10 flex-1 h-7 rounded-lg text-[11px] flex items-center justify-center gap-1.5 transition-colors duration-150 ${
+                className={`relative z-10 flex-1 h-7 md:h-11 rounded-lg text-[11px] md:text-[16px] flex items-center justify-center gap-1.5 transition-colors duration-150 ${
                   mode === "food" ? "font-medium text-brand-navy" : "font-normal text-gray-400"
                 }`}
               >
-                <Utensils size={12} strokeWidth={1.6} /> Food
+                <Utensils size={12} className="md:w-5 md:h-5" strokeWidth={1.6} /> Food
               </button>
             </div>
           </motion.section>
@@ -354,23 +353,24 @@ function SearchResultsView({
           </button>
         </div>
       ) : (
-        <div className="px-3 grid grid-cols-2 gap-2.5">
+        <div className="px-3 grid grid-cols-2 gap-2.5 md:grid-cols-7 md:gap-2.5 search-results-grid">
           {results.map((product) => (
-            <ProductCard
-              key={product.id}
-              id={product.id}
-              name={product.name}
-              image={product.imageColor}
-              price={product.price}
-              originalPrice={product.originalPrice}
-              weight={product.weight}
-              tag={product.tag}
-              brand={product.brand}
-              category={product.category}
-              description={product.description}
-              details={product.details}
-              nutrition={product.nutrition}
-            />
+            <div key={product.id} className="md:max-w-[160px] w-full">
+              <ProductCard
+                id={product.id}
+                name={product.name}
+                image={product.imageColor}
+                price={product.price}
+                originalPrice={product.originalPrice}
+                weight={product.weight}
+                tag={product.tag}
+                brand={product.brand}
+                category={product.category}
+                description={product.description}
+                details={product.details}
+                nutrition={product.nutrition}
+              />
+            </div>
           ))}
         </div>
       )}
@@ -416,7 +416,7 @@ function GroceryHome({
     <>
       <motion.section variants={sectionVariants} className="px-3 pt-3">
         {/* Grocery banner */}
-        <div className="w-full rounded-2xl overflow-hidden relative flex"
+        <div className="w-full rounded-2xl overflow-hidden relative flex md:min-h-[240px]"
           style={{ background: "linear-gradient(120deg, #0a5c42 0%, #0e8a60 50%, #10a870 100%)", minHeight: "130px" }}>
 
           {/* Diagonal stripe pattern */}
@@ -428,23 +428,23 @@ function GroceryHome({
             style={{ background: "radial-gradient(ellipse at 80% 50%, rgba(255,255,255,0.15) 0%, transparent 65%)" }} />
 
           {/* Left: text content */}
-          <div className="relative z-10 flex-1 px-4 py-4 flex flex-col justify-between">
+          <div className="relative z-10 flex-1 px-4 py-4 md:px-10 md:py-8 flex flex-col justify-between">
             <div>
               <motion.div
                 initial={{ opacity: 0, y: -6 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.08 }}
                 className="inline-flex items-center gap-1 mb-2"
               >
-                <span className="bg-yellow-400 text-yellow-900 text-[8px] font-black uppercase px-2 py-0.5 rounded-full tracking-wider leading-none">⚡ 10 min delivery</span>
+                <span className="bg-yellow-400 text-yellow-900 text-[8px] md:text-[12px] font-black uppercase px-2 md:px-3 py-0.5 rounded-full tracking-wider leading-none">⚡ 10 min delivery</span>
               </motion.div>
               <motion.h1
                 initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.14 }}
-                className="text-[19px] font-black text-white leading-[1.18] tracking-tight"
+                className="text-[19px] md:text-[36px] font-black text-white leading-[1.18] tracking-tight"
               >
                 Fresh groceries,<br />at your door
               </motion.h1>
               <motion.p
                 initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.24 }}
-                className="text-[9.5px] text-white/70 mt-1 font-semibold"
+                className="text-[9.5px] md:text-[15px] text-white/70 mt-1 font-semibold"
               >
                 Fruits · Dairy · Snacks · Essentials
               </motion.p>
@@ -454,7 +454,7 @@ function GroceryHome({
               onClick={() => document.getElementById("grocery-aisles")?.scrollIntoView({ behavior: "smooth", block: "start" })}
               initial={{ opacity: 0, y: 4 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.32 }}
               whileTap={{ scale: 0.94 }}
-              className="mt-3 self-start inline-flex items-center gap-1 bg-white text-[#0a5c42] text-[9px] font-black px-3 py-1.5 rounded-full shadow-md cursor-pointer"
+              className="mt-3 self-start inline-flex items-center gap-1 bg-white text-[#0a5c42] text-[9px] md:text-[13px] font-black px-3 md:px-5 py-1.5 md:py-2.5 rounded-full shadow-md cursor-pointer"
             >
               Shop now <ChevronRight size={10} strokeWidth={3} />
             </motion.button>
@@ -464,9 +464,9 @@ function GroceryHome({
           <motion.div
             initial={{ opacity: 0, x: 24 }} animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.12, type: "spring", stiffness: 200, damping: 22 }}
-            className="relative w-[160px] flex-shrink-0 self-stretch flex items-center justify-center select-none overflow-hidden"
+            className="relative w-[160px] md:w-[280px] flex-shrink-0 self-stretch flex items-center justify-center select-none overflow-hidden"
           >
-            <svg width="160" height="130" viewBox="0 0 160 130" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <svg className="w-full h-full" viewBox="0 0 160 130" fill="none" xmlns="http://www.w3.org/2000/svg">
               {/* ── Shadow under everything ── */}
               <ellipse cx="80" cy="122" rx="58" ry="6" fill="black" fillOpacity="0.12"/>
 
@@ -586,13 +586,13 @@ function GroceryHome({
       </motion.section>
 
       <motion.section variants={sectionVariants} className="mt-4" id="grocery-aisles">
-        <div className="px-3 flex items-center justify-between mb-2.5">
-          <h2 className="text-[14px] font-black text-brand-text">Shop by Aisle</h2>
-          <Link href="/categories" className="text-[10px] font-black text-brand-primary bg-gray-100 px-2.5 py-1 rounded-full flex items-center gap-0.5">
+        <div className="px-3 md:px-8 flex items-center justify-between mb-2.5">
+          <h2 className="text-[14px] md:text-[22px] font-black text-brand-text">Shop by Aisle</h2>
+          <Link href="/categories" className="text-[10px] md:text-[14px] font-black text-brand-primary bg-gray-100 px-2.5 md:px-4 py-1 md:py-2 rounded-full flex items-center gap-0.5">
             See all <ChevronRight size={11} strokeWidth={3} />
           </Link>
         </div>
-        <div className="flex overflow-x-auto gap-2 px-3 py-2 no-scrollbar">
+        <div className="flex overflow-x-auto gap-2 px-3 md:px-8 py-2 no-scrollbar">
           {groceryAisles.map((aisle) => (
             <CategoryCard
               key={aisle.name}
@@ -604,19 +604,19 @@ function GroceryHome({
             />
           ))}
         </div>
-        <div className="px-3 mt-3 grid grid-cols-2 gap-2">
+        <div className="px-3 md:px-8 mt-3 grid grid-cols-2 gap-2 md:grid-cols-4 md:gap-3">
           {activeSubcategories.map((subcategory) => (
             <Link
               href={`/categories/${encodeURIComponent(subcategory.name)}`}
               key={subcategory.name}
-              className="min-h-10 rounded-xl border border-gray-200 bg-white px-2.5 py-2 flex items-center justify-between gap-2 active:scale-95 transition-transform shadow-sm"
+              className="min-h-10 md:min-h-14 rounded-xl border border-gray-200 bg-white px-2.5 md:px-4 py-2 md:py-3 flex items-center justify-between gap-2 active:scale-95 transition-transform shadow-sm"
             >
               <div className="flex items-center gap-2 min-w-0">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={subcategory.image} alt={subcategory.name} width={20} height={20} className="w-5 h-5 object-contain flex-shrink-0" loading="lazy" />
-                <span className="text-[10px] font-black text-brand-navy truncate">{subcategory.name}</span>
+                <img src={subcategory.image} alt={subcategory.name} width={20} height={20} className="w-5 h-5 md:w-8 md:h-8 object-contain flex-shrink-0" loading="lazy" />
+                <span className="text-[10px] md:text-[15px] font-black text-brand-navy truncate">{subcategory.name}</span>
               </div>
-              <ChevronRight size={11} className="text-gray-400 flex-shrink-0" strokeWidth={2.5} />
+              <ChevronRight size={11} className="text-gray-400 flex-shrink-0 md:w-5 md:h-5" strokeWidth={2.5} />
             </Link>
           ))}
         </div>
@@ -641,7 +641,7 @@ function FoodHome() {
     <>
       <motion.section variants={sectionVariants} className="px-3 pt-3">
         {/* Food banner */}
-        <div className="w-full rounded-2xl overflow-hidden relative flex"
+        <div className="w-full rounded-2xl overflow-hidden relative flex md:min-h-[240px]"
           style={{ background: "linear-gradient(120deg, #6b1209 0%, #b02a1c 50%, #d94030 100%)", minHeight: "130px" }}>
 
           {/* Diagonal stripe pattern */}
@@ -653,23 +653,23 @@ function FoodHome() {
             style={{ background: "radial-gradient(ellipse at 80% 50%, rgba(255,180,80,0.18) 0%, transparent 65%)" }} />
 
           {/* Left: text content */}
-          <div className="relative z-10 flex-1 px-4 py-4 flex flex-col justify-between">
+          <div className="relative z-10 flex-1 px-4 py-4 md:px-10 md:py-8 flex flex-col justify-between">
             <div>
               <motion.div
                 initial={{ opacity: 0, y: -6 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.08 }}
                 className="inline-flex items-center gap-1 mb-2"
               >
-                <span className="bg-orange-400 text-orange-900 text-[8px] font-black uppercase px-2 py-0.5 rounded-full tracking-wider leading-none">🔥 Hot &amp; fresh</span>
+                <span className="bg-orange-400 text-orange-900 text-[8px] md:text-[12px] font-black uppercase px-2 md:px-3 py-0.5 rounded-full tracking-wider leading-none">🔥 Hot &amp; fresh</span>
               </motion.div>
               <motion.h1
                 initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.14 }}
-                className="text-[19px] font-black text-white leading-[1.18] tracking-tight"
+                className="text-[19px] md:text-[36px] font-black text-white leading-[1.18] tracking-tight"
               >
                 Order from<br />local favorites
               </motion.h1>
               <motion.p
                 initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.24 }}
-                className="text-[9.5px] text-white/70 mt-1 font-semibold"
+                className="text-[9.5px] md:text-[15px] text-white/70 mt-1 font-semibold"
               >
                 Restaurants · Quick bites · Desserts
               </motion.p>
@@ -679,7 +679,7 @@ function FoodHome() {
               onClick={() => document.getElementById("food-restaurants")?.scrollIntoView({ behavior: "smooth", block: "start" })}
               initial={{ opacity: 0, y: 4 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.32 }}
               whileTap={{ scale: 0.94 }}
-              className="mt-3 self-start inline-flex items-center gap-1 bg-white text-[#b02a1c] text-[9px] font-black px-3 py-1.5 rounded-full shadow-md cursor-pointer"
+              className="mt-3 self-start inline-flex items-center gap-1 bg-white text-[#b02a1c] text-[9px] md:text-[13px] font-black px-3 md:px-5 py-1.5 md:py-2.5 rounded-full shadow-md cursor-pointer"
             >
               Order now <ChevronRight size={10} strokeWidth={3} />
             </motion.button>
@@ -689,9 +689,9 @@ function FoodHome() {
           <motion.div
             initial={{ opacity: 0, x: 24 }} animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.12, type: "spring", stiffness: 200, damping: 22 }}
-            className="relative w-[160px] flex-shrink-0 self-stretch flex items-center justify-center select-none overflow-hidden"
+            className="relative w-[160px] md:w-[280px] flex-shrink-0 self-stretch flex items-center justify-center select-none overflow-hidden"
           >
-            <svg width="160" height="130" viewBox="0 0 160 130" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <svg className="w-full h-full" viewBox="0 0 160 130" fill="none" xmlns="http://www.w3.org/2000/svg">
               <defs>
                 {/* Handi body gradient — warm amber */}
                 <linearGradient id="handiBody" x1="55" y1="52" x2="115" y2="115" gradientUnits="userSpaceOnUse">
@@ -933,11 +933,11 @@ function BuyAgainRow({ products }: { products: GroceryProduct[] }) {
           </div>
         </div>
       </div>
-      <div className="flex overflow-x-auto gap-2.5 px-3 pb-3 no-scrollbar">
+      <div className="flex overflow-x-auto gap-2.5 md:gap-4 px-3 pb-3 no-scrollbar">
         {products.map((product, i) => (
           <motion.div
             key={product.id}
-            className="w-[130px] flex-shrink-0"
+            className="w-[130px] md:w-[200px] flex-shrink-0"
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: Math.min(i * 0.04, 0.2), type: "spring", stiffness: 300, damping: 24 }}
@@ -967,11 +967,11 @@ function ProductRow({ title, subtitle, products }: { title: string; subtitle: st
           View all <ChevronRight size={11} strokeWidth={3} />
         </Link>
       </div>
-      <div className="flex overflow-x-auto gap-2.5 px-3 pb-3 no-scrollbar">
+      <div className="flex overflow-x-auto gap-2.5 md:gap-4 px-3 pb-3 no-scrollbar">
         {products.map((product, i) => (
           <motion.div
             key={product.id}
-            className="w-[130px] flex-shrink-0"
+            className="w-[130px] md:w-[200px] flex-shrink-0"
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: Math.min(i * 0.03, 0.15), type: "spring", stiffness: 300, damping: 24 }}
@@ -999,15 +999,17 @@ function ProductGrid({ title, products }: { title: string; products: GroceryProd
           <Zap size={10} fill="white" strokeWidth={0} /> Limited time
         </div>
       </div>
-      <div className="grid grid-cols-2 gap-2.5">
+      <div className="grid grid-cols-2 gap-2.5 md:gap-4" style={{ gridTemplateColumns: "repeat(2, 1fr)" }} data-grid="super-savings">
         {products.slice(0, 4).map((product) => (
-          <ProductCard
-            key={product.id} id={product.id} name={product.name} image={product.imageColor}
-            price={product.price} originalPrice={product.originalPrice}
-            weight={product.weight} tag={product.tag}
-            brand={product.brand} category={product.category}
-            description={product.description} details={product.details} nutrition={product.nutrition}
-          />
+          <div key={product.id} className="md:max-w-[200px] w-full">
+            <ProductCard
+              id={product.id} name={product.name} image={product.imageColor}
+              price={product.price} originalPrice={product.originalPrice}
+              weight={product.weight} tag={product.tag}
+              brand={product.brand} category={product.category}
+              description={product.description} details={product.details} nutrition={product.nutrition}
+            />
+          </div>
         ))}
       </div>
     </motion.section>
