@@ -354,7 +354,7 @@ function SearchResultsView({
           </button>
         </div>
       ) : (
-        <div className="px-3 grid grid-cols-2 gap-2.5 md:grid-cols-6 md:gap-3 search-results-grid">
+        <div className="px-3 grid grid-cols-2 gap-2.5 md:grid-cols-7 md:gap-2.5 search-results-grid">
           {results.map((product) => (
             <div key={product.id} className="md:max-w-[160px] w-full">
               <ProductCard

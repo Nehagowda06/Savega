@@ -191,10 +191,10 @@ button, input { font: inherit; }
     gap: 16px !important;
   }
 
-  /* ── Search results: 6 fixed columns on desktop ── */
+  /* ── Search results: 7 fixed columns on desktop ── */
   .search-results-grid {
-    grid-template-columns: repeat(6, 160px) !important;
-    gap: 12px !important;
+    grid-template-columns: repeat(7, 1fr) !important;
+    gap: 10px !important;
   }
 }
 
