@@ -354,23 +354,24 @@ function SearchResultsView({
           </button>
         </div>
       ) : (
-        <div className="px-3 grid grid-cols-2 gap-2.5">
+        <div className="px-3 grid grid-cols-2 gap-2.5 md:grid-cols-6 md:gap-3 search-results-grid">
           {results.map((product) => (
-            <ProductCard
-              key={product.id}
-              id={product.id}
-              name={product.name}
-              image={product.imageColor}
-              price={product.price}
-              originalPrice={product.originalPrice}
-              weight={product.weight}
-              tag={product.tag}
-              brand={product.brand}
-              category={product.category}
-              description={product.description}
-              details={product.details}
-              nutrition={product.nutrition}
-            />
+            <div key={product.id} className="md:max-w-[160px] w-full">
+              <ProductCard
+                id={product.id}
+                name={product.name}
+                image={product.imageColor}
+                price={product.price}
+                originalPrice={product.originalPrice}
+                weight={product.weight}
+                tag={product.tag}
+                brand={product.brand}
+                category={product.category}
+                description={product.description}
+                details={product.details}
+                nutrition={product.nutrition}
+              />
+            </div>
           ))}
         </div>
       )}

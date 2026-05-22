@@ -190,5 +190,11 @@ button, input { font: inherit; }
     grid-template-columns: repeat(4, 200px) !important;
     gap: 16px !important;
   }
+
+  /* ── Search results: 6 fixed columns on desktop ── */
+  .search-results-grid {
+    grid-template-columns: repeat(6, 160px) !important;
+    gap: 12px !important;
+  }
 }
 
