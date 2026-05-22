@@ -2,7 +2,7 @@
 
 A fast, responsive Quick Commerce application for groceries and food delivery.
 
-**Live Demo:** [https://q-commerce-delta.vercel.app](https://q-commerce-delta.vercel.app)
+**Live Demo:** [https://savega.vercel.app](https://savega.vercel.app)
 
 ## Tech Stack
 
