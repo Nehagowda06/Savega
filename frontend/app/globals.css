@@ -191,30 +191,29 @@ button, input { font: inherit; }
 
   /* ── All product cards: uniform size on desktop ── */
 
-  /* Horizontal scroll rows — make cards bigger to match grid cards */
+  /* Horizontal scroll rows — override the w-[130px] Tailwind class */
+  .mt-5 .flex.overflow-x-auto,
+  .mt-3 .flex.overflow-x-auto {
+    gap: 16px !important;
+  }
   .mt-5 .flex.overflow-x-auto > div,
   .mt-3 .flex.overflow-x-auto > div {
     width: 200px !important;
+    min-width: 200px !important;
     flex-shrink: 0;
-    margin-right: 12px;
   }
 
-  /* Super Savings grid — cap card height so image doesn't balloon */
+  /* Super Savings grid — fixed column width so cards don't stretch */
   .super-savings-grid {
-    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+    grid-template-columns: repeat(4, 220px) !important;
     gap: 16px !important;
-  }
-  .super-savings-grid > div {
-    max-width: 220px !important;
-    justify-self: center;
-    width: 100%;
+    justify-content: start !important;
   }
 
-  /* Search results grid — same cap */
-  .px-3.grid > div {
-    max-width: 220px !important;
-    justify-self: center;
-    width: 100%;
+  /* Search results grid — same fixed width */
+  .px-3.grid {
+    grid-template-columns: repeat(auto-fill, 220px) !important;
+    gap: 16px !important;
   }
 }
 
