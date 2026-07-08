@@ -2,7 +2,7 @@
 
 import { ArrowLeft, Check } from "lucide-react";
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import PageWrapper from "@/components/layout/PageWrapper";
 
 const languages = ["English", "ಕನ್ನಡ", "हिन्दी"];
@@ -11,6 +11,48 @@ export default function SettingsPage() {
   const [lang, setLang] = useState("English");
   const [darkMode, setDarkMode] = useState(false);
   const [cacheCleared, setCacheCleared] = useState(false);
+
+  // Load saved dark mode preference on mount
+  useEffect(() => {
+    const saved = localStorage.getItem("darkMode");
+    if (saved === "true") {
+      setDarkMode(true);
+      const appContainer = document.querySelector(".app-container") as HTMLElement;
+      if (appContainer) {
+        appContainer.style.background = "#111";
+        appContainer.style.color = "#f0f0f0";
+        appContainer.setAttribute("data-dark", "true");
+      }
+      document.documentElement.setAttribute("data-dark", "true");
+    }
+  }, []);
+
+  // Apply dark mode to the html element whenever it changes
+  const handleDarkModeToggle = () => {
+    const newValue = !darkMode;
+    setDarkMode(newValue);
+    localStorage.setItem("darkMode", String(newValue));
+
+    const appContainer = document.querySelector(".app-container") as HTMLElement;
+    if (appContainer) {
+      if (newValue) {
+        appContainer.style.background = "#111";
+        appContainer.style.color = "#f0f0f0";
+        appContainer.setAttribute("data-dark", "true");
+      } else {
+        appContainer.style.background = "";
+        appContainer.style.color = "";
+        appContainer.removeAttribute("data-dark");
+      }
+    }
+
+    // Also toggle on html for CSS class selectors
+    if (newValue) {
+      document.documentElement.setAttribute("data-dark", "true");
+    } else {
+      document.documentElement.removeAttribute("data-dark");
+    }
+  };
 
   const handleClearCache = () => {
     setCacheCleared(true);
@@ -39,10 +81,23 @@ export default function SettingsPage() {
               type="button"
               role="switch"
               aria-checked={darkMode}
-              onClick={() => setDarkMode((v) => !v)}
-              className={`relative w-10 h-5 rounded-full transition-colors flex-shrink-0 ${darkMode ? "bg-brand-primary" : "bg-gray-200"}`}
+              onClick={handleDarkModeToggle}
+              style={{ width: 44, height: 24, borderRadius: 12, flexShrink: 0, position: "relative", border: "none", cursor: "pointer", transition: "background 0.2s", background: darkMode ? "#6941c6" : "#d1d5db" }}
             >
-              <span className={`absolute top-0.5 w-4 h-4 rounded-full bg-white shadow transition-transform ${darkMode ? "translate-x-5" : "translate-x-0.5"}`} />
+              <span
+                style={{
+                  position: "absolute",
+                  top: 3,
+                  left: darkMode ? 23 : 3,
+                  width: 18,
+                  height: 18,
+                  borderRadius: "50%",
+                  background: "white",
+                  boxShadow: "0 1px 4px rgba(0,0,0,0.2)",
+                  transition: "left 0.2s",
+                  display: "block",
+                }}
+              />
             </button>
           </div>
 
@@ -89,5 +144,3 @@ export default function SettingsPage() {
     </PageWrapper>
   );
 }
-
-

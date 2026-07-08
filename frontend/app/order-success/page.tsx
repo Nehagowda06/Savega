@@ -220,7 +220,7 @@ function OrderSuccessContent() {
 
         {/* Actions */}
         <motion.div initial={{ y: 20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 0.8 }}
-          className="z-10 w-full space-y-2">
+          className="z-10 w-full flex flex-col gap-3">
           <Link href="/orders">
             <button className="w-full h-11 rounded-xl border border-brand-primary text-brand-primary text-xs font-black flex items-center justify-center gap-2">
               <ClipboardList size={16} strokeWidth={2.5} />

@@ -47,10 +47,21 @@ export default function NotificationsPage() {
                 role="switch"
                 aria-checked={enabled[s.id]}
                 onClick={() => setEnabled((prev) => ({ ...prev, [s.id]: !prev[s.id] }))}
-                className={`relative w-10 h-5 rounded-full transition-colors flex-shrink-0 ${enabled[s.id] ? "bg-brand-primary" : "bg-gray-200"}`}
+                style={{ width: 44, height: 24, borderRadius: 12, flexShrink: 0, position: "relative", border: "none", cursor: "pointer", transition: "background 0.2s", background: enabled[s.id] ? "#6941c6" : "#d1d5db" }}
               >
                 <span
-                  className={`absolute top-0.5 w-4 h-4 rounded-full bg-white shadow transition-transform ${enabled[s.id] ? "translate-x-5" : "translate-x-0.5"}`}
+                  style={{
+                    position: "absolute",
+                    top: 3,
+                    left: enabled[s.id] ? 23 : 3,
+                    width: 18,
+                    height: 18,
+                    borderRadius: "50%",
+                    background: "white",
+                    boxShadow: "0 1px 4px rgba(0,0,0,0.2)",
+                    transition: "left 0.2s",
+                    display: "block",
+                  }}
                 />
               </button>
             </div>

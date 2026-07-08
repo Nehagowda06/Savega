@@ -148,6 +148,29 @@ button, input { font: inherit; }
   box-shadow: 0 8px 24px rgba(6,31,65,0.13);
 }
 
+/* ─── Dark Mode ─────────────────────────────────────────────────────────── */
+[data-dark="true"] .app-container,
+.app-container[data-dark="true"] {
+  background: #111 !important;
+  color: #f0f0f0 !important;
+}
+[data-dark="true"] .app-container .bg-white,
+.app-container[data-dark="true"] .bg-white        { background-color: #1e1e1e !important; }
+[data-dark="true"] .app-container .bg-gray-50,
+.app-container[data-dark="true"] .bg-gray-50      { background-color: #252525 !important; }
+[data-dark="true"] .app-container .bg-gray-100,
+.app-container[data-dark="true"] .bg-gray-100     { background-color: #2a2a2a !important; }
+[data-dark="true"] .app-container .border-gray-50,
+.app-container[data-dark="true"] .border-gray-50  { border-color: #2a2a2a !important; }
+[data-dark="true"] .app-container .border-gray-100,
+.app-container[data-dark="true"] .border-gray-100 { border-color: #333 !important; }
+[data-dark="true"] .app-container .text-brand-text,
+.app-container[data-dark="true"] .text-brand-text        { color: #f0f0f0 !important; }
+[data-dark="true"] .app-container .text-brand-text-muted,
+.app-container[data-dark="true"] .text-brand-text-muted  { color: #999 !important; }
+[data-dark="true"] .app-container .shadow-soft,
+.app-container[data-dark="true"] .shadow-soft     { box-shadow: 0 4px 20px -2px rgba(0,0,0,0.5) !important; }
+
 /* ─── Desktop responsive (md+ only) ────────────────────────────────────── */
 @media (min-width: 768px) {
   .app-container {
